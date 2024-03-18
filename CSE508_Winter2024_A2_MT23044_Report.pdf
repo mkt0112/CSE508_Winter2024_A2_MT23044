@@ -1,0 +1,45 @@
+﻿Image Retrieval:
+
+Approach:
+1. Feature Extraction: Utilizes the pre-trained ResNet50 model for feature extraction from images. ResNet50 is a deep convolutional neural network (CNN) commonly used for image classification tasks.
+2. Preprocessing: Images are downloaded from URLs, resized to match the input size required by ResNet50 (224x224 pixels), and preprocessed using the `preprocess_input` function provided by Keras.
+3. Average Prediction: Predictions are obtained from the ResNet50 model for each image, and these predictions are averaged across multiple images associated with each review.
+4. Cosine Similarity: Calculates the cosine similarity between the feature vector of the input image and the feature vectors of stored images.
+5. Ranking: Ranks the images based on the cosine similarity scores.
+
+Methodologies and Assumptions:
+- Assumes ResNet50's features capture important visual information necessary for similarity calculations.
+- Assumes averaging predictions across multiple images provides a more representative feature vector.
+- Utilizes cosine similarity as a measure of similarity between image feature vectors.
+- Assumes higher cosine similarity implies greater visual similarity between images.
+
+Results:
+- Outputs the top-ranked images based on cosine similarity scores, indicating visually similar images to the input image.
+
+
+
+
+
+
+
+
+
+********************************************************************************                                                                     
+
+Text Retrieval:
+
+Approach:
+1. Text Preprocessing:  Preprocesses review text data by converting to lowercase, tokenizing, removing punctuation, stopwords, and performing stemming and lemmatization using NLTK.
+2. TF-IDF Calculation: Calculates TF-IDF scores for the preprocessed text. TF-IDF (Term Frequency-Inverse Document Frequency) is a numerical statistic used to reflect the importance of a word in a document relative to a collection of documents.
+3. Cosine Similarity:Computes cosine similarity between the TF-IDF vector of the input text and the TF-IDF vectors of stored text data.
+4. Composite Similarity Score: Combines image and text similarities to obtain a composite similarity score, possibly weighted equally.
+5. Ranking:Ranks the images based on the composite similarity scores.
+
+ Methodologies and Assumptions: 
+- Utilizes TF-IDF vectorization to represent text data, assuming it captures important semantic features.
+- Assumes cosine similarity is an appropriate metric for measuring text similarity.
+- Combines image and text similarity scores equally in the composite similarity score assumption.
+
+ Results: 
+- Outputs the top-ranked images based on composite similarity scores, considering both image and text similarities. This provides recommendations based on both visual and textual relevance.
+
